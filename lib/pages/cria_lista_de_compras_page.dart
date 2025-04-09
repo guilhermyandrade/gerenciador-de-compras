@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../model/lista_de_compras.dart';
+import '../model/item.dart';
+
 
 class CriaListaDeComprasPage extends StatefulWidget {
   final Function adicionarListaDeCompras;
@@ -52,10 +54,10 @@ class _CriaListaDeComprasPageState extends State<CriaListaDeComprasPage> {
             children: [
               TextFormField(
                 controller: _nomeController,
-                decoration: const InputDecoration(labelText: 'Nome da lista'),
+                decoration: const InputDecoration(labelText: 'Objetivo da lista'),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'teste';
+                    return 'Por favor, forneça o objetivo geral da lista';
                   }
                   return null;
                 },
@@ -71,6 +73,10 @@ class _CriaListaDeComprasPageState extends State<CriaListaDeComprasPage> {
                   ),
                   const SizedBox(width: 16),
                   ElevatedButton(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all<Color>(Colors.amber), //Colors.amber//Color(0xffFFA800),
+                      foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                    ),
                     onPressed: _adicionarItem,
                     child: const Text('Adicionar item'),
                   ),
@@ -92,6 +98,10 @@ class _CriaListaDeComprasPageState extends State<CriaListaDeComprasPage> {
                 ),
               ),
               ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: WidgetStateProperty.all<Color>(Colors.amber), //Colors.amber//Color(0xffFFA800),
+                  foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                ),
                 onPressed: _criarListaDeCompras,
                 child: const Text('Criar lista de compras'),
               ),

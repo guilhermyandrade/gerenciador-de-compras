@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/lista_de_compras.dart';
+import '../model/item.dart';
 
 class ItemWidget extends StatefulWidget {
   final Item item;
@@ -129,10 +130,22 @@ class _ItemWidgetState extends State<ItemWidget> {
                 const SizedBox(width: 20),
                 Text('Total: R\$ ${widget.item.precoUnitario * widget.item.quantidade}'),
                 const SizedBox(width: 20),
-                ElevatedButton(onPressed: _visualizarFormulario, child: const Text('Editar'))
+                ElevatedButton(
+                  onPressed: _visualizarFormulario,
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all<Color>(Colors.amber), //Colors.amber//Color(0xffFFA800),
+                    foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+                  ),
+                  child: const Text('Editar')
+                )
               ]
             ) : ElevatedButton(
-          onPressed: _visualizarFormulario, child: const Text('Informar preço e quantidade'),
+            onPressed: _visualizarFormulario,
+            style: ButtonStyle(
+              backgroundColor: WidgetStateProperty.all<Color>(Colors.amber), //Colors.amber//Color(0xffFFA800),
+              foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+            ),
+            child: const Text('Informar preço e quantidade'),
         ),
       ],
     );
